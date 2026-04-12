@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datenschutzerklärung – journal App</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0a; color: #e8e8e8; min-height: 100vh; }
+        .container { max-width: 720px; margin: 0 auto; padding: 60px 24px; }
+        .back { display: inline-flex; align-items: center; gap: 8px; color: #888; text-decoration: none; font-size: 14px; margin-bottom: 40px; }
+        .back:hover { color: #e8e8e8; }
+        .app-header { margin-bottom: 48px; }
+        .app-name { font-size: 28px; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
+        .app-sub { font-size: 14px; color: #666; margin-top: 4px; }
+        h1 { font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 8px; }
+        .stand { font-size: 13px; color: #555; margin-bottom: 32px; }
+        h2 { font-size: 15px; font-weight: 600; color: #fff; margin: 32px 0 12px; }
+        p { font-size: 15px; line-height: 1.7; color: #aaa; margin-bottom: 12px; }
+        ul { padding-left: 20px; margin-bottom: 12px; }
+        li { font-size: 15px; line-height: 1.8; color: #aaa; }
+        a { color: #e8e8e8; }
+        .section { border-top: 1px solid #1e1e1e; padding-top: 32px; margin-top: 32px; }
+        .highlight { background: #111; border: 1px solid #1e1e1e; border-radius: 10px; padding: 16px 20px; margin: 16px 0; }
+        .highlight p { margin: 0; color: #888; }
+        .footer { margin-top: 64px; padding-top: 24px; border-top: 1px solid #1e1e1e; font-size: 13px; color: #555; display: flex; gap: 24px; flex-wrap: wrap; }
+        .footer a { color: #555; text-decoration: none; }
+        .footer a:hover { color: #888; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back">← Zurück</a>
+
+        <div class="app-header">
+            <div class="app-name">journal</div>
+            <div class="app-sub">dein Weg, dein Plan</div>
+        </div>
+
+        <h1>Datenschutzerklärung</h1>
+        <div class="stand">Stand: April 2026</div>
+
+        <h2>1. Verantwortlicher</h2>
+        <p>
+            Marius Fraßek<br>
+            Jesuitenhof 7, 41460 Neuss, Deutschland<br>
+            E-Mail: <a href="mailto:marius.frassek10@web.de">marius.frassek10@web.de</a>
+        </p>
+
+        <div class="section">
+            <h2>2. Welche Daten werden gespeichert?</h2>
+            <p>Die App speichert ausschließlich Daten, die du selbst eingibst:</p>
+            <ul>
+                <li>Journal-Einträge (Tagesplanung, Tagesreflexion, Ziele, Erfolge, Erkenntnisse, Dankbarkeit, Stimmungsbewertung)</li>
+                <li>Wochenplanungen und Wochenreflexionen</li>
+                <li>Habits (Gewohnheiten) und deren Verlauf</li>
+                <li>Jahresziele und Lebensbereiche</li>
+                <li>Profilname und optionales Profilbild</li>
+                <li>Statistiken und Fortschrittsdaten (XP, Level, Streaks)</li>
+                <li>App-Einstellungen (Sprache, Design, Benachrichtigungen)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>3. Wo werden die Daten gespeichert?</h2>
+            <p>
+                Alle Daten werden <strong>lokal auf deinem iPhone</strong> gespeichert (SwiftData / Core Data).
+                Wenn du iCloud aktiviert hast, werden die Daten zusätzlich in deiner
+                <strong>privaten iCloud-Datenbank (Apple CloudKit)</strong> gespeichert.
+            </p>
+            <div class="highlight">
+                <p>
+                    ☁️ Die iCloud-Synchronisation erfolgt ausschließlich in deine persönliche,
+                    private iCloud-Datenbank. Der Entwickler hat zu keinem Zeitpunkt Zugriff auf
+                    deine gespeicherten Daten.
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>4. Zweck der Datenverarbeitung</h2>
+            <p>
+                Die Daten werden ausschließlich für die Funktionalität der App verwendet:
+                persönliches Journaling, Habit-Tracking, Zielplanung und Fortschrittsanalyse.
+            </p>
+            <p>Es gibt keinen weiteren Verwendungszweck.</p>
+        </div>
+
+        <div class="section">
+            <h2>5. Datenweitergabe</h2>
+            <div class="highlight">
+                <p>
+                    🚫 Deine Daten werden <strong>nicht an Dritte weitergegeben</strong>.
+                    Keine Analytics, kein Tracking, keine Werbung, keine externen Server.
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>6. Tracking und Analytics</h2>
+            <p>Diese App verwendet:</p>
+            <ul>
+                <li>Kein Tracking</li>
+                <li>Keine Analytics-Dienste (kein Firebase, kein Amplitude, kein Mixpanel)</li>
+                <li>Keine Werbung</li>
+                <li>Keine Cookies</li>
+                <li>Keinen Netzwerkzugriff (außer iCloud Sync wenn aktiviert)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>7. Push-Benachrichtigungen</h2>
+            <p>
+                Push-Benachrichtigungen werden nur gesendet, wenn du ausdrücklich zustimmst.
+                Du kannst Benachrichtigungen jederzeit in den iOS-Einstellungen deaktivieren.
+                Benachrichtigungen werden lokal auf deinem Gerät erstellt und nicht über externe Server versendet.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>8. Deine Rechte (DSGVO Art. 15–22)</h2>
+            <p>Du hast folgende Rechte bezüglich deiner personenbezogenen Daten:</p>
+            <ul>
+                <li><strong>Auskunft</strong> (Art. 15): Du kannst jederzeit Auskunft über deine gespeicherten Daten erhalten.</li>
+                <li><strong>Berichtigung</strong> (Art. 16): Du kannst deine Daten direkt in der App bearbeiten.</li>
+                <li><strong>Löschung</strong> (Art. 17): Du kannst alle Daten jederzeit selbst löschen.</li>
+                <li><strong>Datenübertragbarkeit</strong> (Art. 20): Die Daten liegen auf deinem Gerät.</li>
+                <li><strong>Widerspruch</strong> (Art. 21): Du kannst der Verarbeitung widersprechen.</li>
+                <li><strong>Einschränkung</strong> (Art. 18): Du kannst die Verarbeitung einschränken.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>9. Datenlöschung</h2>
+            <p>
+                Du kannst alle deine Daten jederzeit selbst löschen: In der App unter
+                <strong>Profil → Alle Daten zurücksetzen</strong>. Damit werden alle lokal
+                gespeicherten Daten unwiderruflich gelöscht.
+            </p>
+            <p>
+                Für iCloud-Daten: Einstellungen → [Dein Name] → iCloud → Manage Storage →
+                journal → Delete Data.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>10. Kontakt für Datenschutzanfragen</h2>
+            <p>
+                Bei Fragen zum Datenschutz wende dich an:<br>
+                <a href="mailto:marius.frassek10@web.de">marius.frassek10@web.de</a>
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>11. Änderungen dieser Datenschutzerklärung</h2>
+            <p>
+                Diese Datenschutzerklärung kann bei App-Updates angepasst werden.
+                Die aktuelle Version ist immer unter dieser URL abrufbar.
+            </p>
+        </div>
+
+        <div class="footer">
+            <a href="index.html">Start</a>
+            <a href="impressum.html">Impressum</a>
+            <a href="support.html">Support</a>
+            <span>Stand: April 2026</span>
+        </div>
+    </div>
+</body>
+</html>
