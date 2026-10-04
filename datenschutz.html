@@ -39,7 +39,7 @@
         </div>
 
         <h1>Datenschutzerklärung</h1>
-        <div class="stand">Stand: April 2026</div>
+        <div class="stand">Stand: Oktober 2026</div>
 
         <h2>1. Verantwortlicher</h2>
         <p>
@@ -49,13 +49,17 @@
         </p>
 
         <div class="section">
-            <h2>2. Welche Daten werden gespeichert?</h2>
-            <p>Die App speichert ausschließlich Daten, die du selbst eingibst:</p>
+            <h2>2. Welche Daten verarbeitet die App?</h2>
+            <p>Die App speichert Daten, die du selbst eingibst, live aufzeichnest oder auf deinen Wunsch aus Apple Health übernimmst:</p>
             <ul>
                 <li>Journal-Einträge (Tagesplanung, Tagesreflexion, Ziele, Erfolge, Erkenntnisse, Dankbarkeit, Stimmungsbewertung)</li>
-                <li>Wochenplanungen und Wochenreflexionen</li>
+                <li>Wochenplanungen, Wochenreflexionen, Monatspläne und Ideen</li>
                 <li>Habits (Gewohnheiten) und deren Verlauf</li>
-                <li>Jahresziele und Lebensbereiche</li>
+                <li>Jahresziele, Lebensbereiche und Moodboard-Bilder</li>
+                <li>Bücher (Titel, Autor, Bewertung, Cover, Zusammenfassungen)</li>
+                <li>Sport-Einträge (Aktivität, Dauer, Distanz, Kalorien, Puls, GPS-Route, Fotos) – selbst eingetragen, live aufgezeichnet oder aus Apple Health übernommen</li>
+                <li>Ernährung (Mahlzeiten, eigene Lebensmittel, Wasser, Körpergewicht, Größe, Ernährungsziele, Trainingstage)</li>
+                <li>Coach-Gespräche und das Gedächtnis des Coaches (nur mit build. Premium)</li>
                 <li>Profilname und optionales Profilbild</li>
                 <li>Statistiken und Fortschrittsdaten (XP, Level, Streaks)</li>
                 <li>App-Einstellungen (Sprache, Design, Benachrichtigungen)</li>
@@ -65,9 +69,11 @@
         <div class="section">
             <h2>3. Wo werden die Daten gespeichert?</h2>
             <p>
-                Alle Daten werden <strong>lokal auf deinem iPhone</strong> gespeichert (SwiftData / Core Data).
+                Alle Daten werden <strong>lokal auf deinem iPhone</strong> gespeichert (SwiftData).
                 Wenn du iCloud aktiviert hast, werden die Daten zusätzlich in deiner
-                <strong>privaten iCloud-Datenbank (Apple CloudKit)</strong> gespeichert.
+                <strong>privaten iCloud-Datenbank (Apple CloudKit)</strong> gespeichert und zwischen deinen
+                Geräten synchronisiert. Das betrifft alle in Abschnitt 2 genannten Daten – auch aus Apple Health
+                übernommene Trainings, Körpergewicht und Ernährungsdaten.
             </p>
             <div class="highlight">
                 <p>
@@ -76,76 +82,336 @@
                     deine gespeicherten Daten.
                 </p>
             </div>
+            <p>
+                Die Speicherung dient der Bereitstellung der App (Art. 6 Abs. 1 lit. b DSGVO). Den iCloud-Dienst
+                betreibt Apple im Rahmen deines eigenen iCloud-Vertrags mit Apple.
+            </p>
         </div>
 
         <div class="section">
             <h2>4. Zweck der Datenverarbeitung</h2>
             <p>
                 Die Daten werden ausschließlich für die Funktionalität der App verwendet:
-                persönliches Journaling, Habit-Tracking, Zielplanung und Fortschrittsanalyse.
+                persönliches Journaling, Habit-Tracking, Zielplanung, Sport- und Ernährungstracking,
+                Fortschrittsanalyse und – wenn du sie nutzt – die Community-Funktionen.
             </p>
-            <p>Es gibt keinen weiteren Verwendungszweck.</p>
+            <p>
+                Wenn du <strong>build. Premium</strong> nutzt, werden zusätzlich Daten verarbeitet, um die
+                Antworten des Coaches und die Nährwert-Schätzung beim Foto-Logging zu erzeugen
+                (siehe Abschnitt 5).
+            </p>
+            <p>Es gibt keinen weiteren Verwendungszweck – insbesondere keine Werbung und kein Profiling.</p>
         </div>
 
         <div class="section">
-            <h2>5. Datenweitergabe</h2>
+            <h2>5. Coach und Foto-Logging (build. Premium)</h2>
+            <p>
+                Coach und Foto-Logging funktionieren nur mit einer Internetverbindung: Die dafür nötigen Daten
+                werden über einen eigenen Server des Entwicklers (einen Cloudflare Worker) an die Claude-API von
+                Anthropic gesendet. Welche anderen Funktionen Daten übertragen, steht in den Abschnitten 6 bis 8.
+            </p>
+            <p><strong>a) Coach</strong></p>
+            <p>
+                Wenn du mit dem Coach schreibst, werden deine Nachrichten, die Gedächtnis-Zusammenfassung des
+                Coaches und ein aktueller App-Kontext gesendet. Der App-Kontext enthält: Datum und Uhrzeit, deine
+                aktiven Jahresziele mit Fortschritt, deine Habits mit Streak und Erfüllungsquote, die Tagesziele
+                von heute, Kennzahlen (Anzahl und Minuten deiner Sport-Einheiten im laufenden Monat, gelesene
+                Bücher in diesem Jahr, Journal-Streak), Tagesbewertungen, Erfolge, Erkenntnisse und Dankbarkeit
+                der letzten 7 Tage sowie Anzahl und längste Sport-Einheit der letzten 7 Tage (Dauer und Art).
+                Die Sport-Angaben können auf Trainings beruhen, die aus Apple Health übernommen wurden.
+                Puls, Körpergewicht, Größe, Geburtsdatum, Geschlecht und Ernährungsdaten werden nicht an den
+                Coach gesendet.
+            </p>
+            <p>
+                Zusätzlich gilt beim Coach:
+            </p>
+            <ul>
+                <li><strong>Muster-Analyse:</strong> Höchstens einmal pro Woche werden beim Öffnen des Coaches
+                    Tagesbewertungen, Tagesziele, Erfolge, Erkenntnisse und Dankbarkeit der letzten 75 Tage
+                    (gekürzt) gesendet, um wiederkehrende Muster zu erkennen. Das Ergebnis wird nur in der App
+                    gespeichert.</li>
+                <li><strong>Bücher:</strong> Für eine Buch-Zusammenfassung werden Titel und Autor gesendet, für
+                    eine Buchempfehlung zusätzlich Titel, Autor, Genre und Bewertung deiner gelesenen Bücher sowie
+                    der App-Kontext und das Gedächtnis. Findet die Cover-Suche nichts, wird mit Titel und Autor
+                    der englische Buchtitel erfragt.</li>
+            </ul>
+            <p>
+                Der Worker von build. leitet diese Daten nur weiter und speichert sie nicht.
+            </p>
+            <p><strong>b) Foto-Logging</strong></p>
+            <p>
+                Wenn du eine Mahlzeit fotografierst, werden das Foto (verkleinert) und dein optionaler Hinweis
+                über denselben Worker an die Claude-API von Anthropic gesendet, um die Lebensmittel und
+                Nährwerte zu schätzen. Der Worker von build. speichert das Foto nicht. In der App wird nur das
+                Ergebnis gespeichert, das du bestätigst – nicht das Foto.
+            </p>
+            <p><strong>c) Abo-Prüfung</strong></p>
+            <p>
+                Damit nur Abonnenten das Foto-Logging nutzen können, wird die Transaktionskennung deines
+                Abos an den Worker übermittelt und von dort bei Apple (App Store Server API) geprüft.
+                Der Worker speichert dafür für bis zu 2 Tage einen Zähler pro Abo und Tag (für das
+                Tageslimit) sowie für einige Stunden den Abo-Status. Dabei werden keine Namen, Fotos
+                oder Inhalte gespeichert.
+            </p>
+            <p><strong>d) Speicherung bei Anthropic</strong></p>
+            <p>
+                build. speichert weder Nachrichten noch Fotos. Anthropic selbst löscht Ein- und Ausgaben der API
+                laut eigener Richtlinie automatisch innerhalb von 30 Tagen. Wird eine Anfrage von Anthropics
+                automatischen Systemen als Verstoß gegen die Nutzungsrichtlinien markiert, können die Ein- und
+                Ausgaben bis zu 2 Jahre aufbewahrt werden. Anthropic nutzt die über die API übermittelten Daten
+                nicht zum Training seiner Modelle. Details:
+                <a href="https://privacy.claude.com/de/articles/7996866-how-long-do-you-store-my-organization-s-data">Anthropic – Aufbewahrung von Organisationsdaten</a>.
+            </p>
+            <p><strong>Zweck und Rechtsgrundlage</strong></p>
+            <p>
+                Die Verarbeitung dient ausschließlich dazu, die von dir angeforderten Funktionen von
+                build. Premium bereitzustellen (Art. 6 Abs. 1 lit. b DSGVO). Soweit dabei Gesundheitsdaten
+                betroffen sind (z. B. Trainingsangaben im Coach-Kontext oder Fotos deiner Mahlzeiten), erfolgt
+                die Verarbeitung auf Grundlage deiner ausdrücklichen Einwilligung (Art. 9 Abs. 2 lit. a DSGVO),
+                die du jederzeit mit Wirkung für die Zukunft widerrufen kannst, indem du Coach bzw.
+                Foto-Logging nicht mehr nutzt. Ohne diese Übermittlung können Coach und Foto-Logging nicht
+                funktionieren. Wenn du sie nicht nutzt, werden keine dieser Daten übertragen.
+            </p>
+            <p><strong>Empfänger</strong></p>
+            <ul>
+                <li><strong>Cloudflare, Inc.</strong> (Betrieb des Workers) –
+                    <a href="https://www.cloudflare.com/de-de/privacypolicy/">Datenschutzerklärung</a></li>
+                <li><strong>Anthropic</strong> (Claude-API, erzeugt Antworten und Schätzungen) –
+                    <a href="https://www.anthropic.com/legal/privacy">Datenschutzerklärung</a></li>
+                <li><strong>Apple Inc.</strong> (Abo-Abwicklung und App Store Server API) –
+                    <a href="https://www.apple.com/de/legal/privacy/">Datenschutzerklärung</a></li>
+            </ul>
+            <p>
+                Diese Anbieter können Daten auch außerhalb der EU, insbesondere in den USA, verarbeiten.
+                Wie lange Cloudflare und Apple Daten aufbewahren und wofür sie sie verwenden, regeln ihre
+                eigenen Datenschutzerklärungen.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>6. Weitere Online-Funktionen (auch ohne Abo)</h2>
+            <p><strong>a) Barcode-Scan (Open Food Facts)</strong></p>
+            <p>
+                Wenn du den Barcode eines Lebensmittels scannst, fragt die App die offene Datenbank
+                <strong>Open Food Facts</strong> (Open Food Facts, gemeinnütziger Verein, Frankreich) ab. Dabei
+                werden die Barcode-Nummer, deine IP-Adresse und eine technische Kennung der App (User-Agent mit
+                App-Name, App-Version und der Kontaktadresse des Entwicklers) übertragen – keine Daten über dich
+                oder deine Ernährung. Die Produktdaten stehen unter der Open Database License (ODbL).
+                <a href="https://world.openfoodfacts.org/privacy">Datenschutzerklärung von Open Food Facts</a>.
+                Das Scannen selbst und das Auslesen von Nährwerttabellen erfolgen auf deinem iPhone.
+            </p>
+            <p><strong>b) Buchcover (Google Books)</strong></p>
+            <p>
+                Wenn du ein Buch anlegst, sucht die App über die Google Books API nach einem Cover. Dabei werden
+                Buchtitel und Autor, deine IP-Adresse sowie der API-Schlüssel und die Kennung der App an Google
+                übertragen; das Cover-Bild wird anschließend von Google-Servern geladen.
+                <a href="https://policies.google.com/privacy">Datenschutzerklärung von Google</a>.
+            </p>
+            <p><strong>c) Karten (Apple Karten)</strong></p>
+            <p>
+                Karten und Routenbilder in der App werden über Apple Karten (MapKit) geladen. Dabei erhält Apple
+                den angezeigten Kartenausschnitt und deine IP-Adresse.
+            </p>
+            <p><strong>d) Käufe, Siri und Kurzbefehle</strong></p>
+            <p>
+                Käufe und Abos wickelt Apple über den App Store ab; der Entwickler erhält keine Zahlungsdaten.
+                Wenn du Siri oder Kurzbefehle nutzt (z. B. „Essen eintragen“), verarbeitet Apple deine
+                Spracheingabe nach den Bedingungen von Apple; die App erhält nur den erkannten Text und speichert
+                den Eintrag lokal. Die Spracheingabe im Suchfeld der App wird vollständig auf deinem iPhone
+                verarbeitet.
+            </p>
+            <p>
+                Rechtsgrundlage für diese Abschnitte ist die Bereitstellung der jeweils von dir genutzten Funktion
+                (Art. 6 Abs. 1 lit. b DSGVO).
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>7. Community, Wettkämpfe, Streak-Duo und Hausrunden</h2>
+            <p>
+                Die Community-Funktionen sind freiwillig. Sie nutzen Apple CloudKit; der Entwickler betreibt dafür
+                keinen eigenen Server. Statt deiner Apple-ID oder E-Mail-Adresse wird eine von Apple vergebene,
+                app-spezifische Nutzerkennung verwendet.
+            </p>
+            <p><strong>a) Freunde und Feed (geteilter Bereich deiner iCloud)</strong></p>
+            <p>
+                Deine Community-Inhalte liegen in einem eigenen Bereich deiner privaten iCloud, den du per
+                Einladungslink oder QR-Code mit Freunden teilst. Wer den Link öffnet und annimmt, kann diesen
+                Bereich lesen – gib ihn deshalb nur an Personen weiter, denen du vertraust. Dort liegen:
+            </p>
+            <ul>
+                <li>dein Community-Name und Profilbild</li>
+                <li>nur die Einträge, die du ausdrücklich teilst:
+                    Sport (Aktivität, Dauer, Distanz, Kalorien, Kurzkommentar, optional Foto, ein Routenbild, das
+                    den Streckenverlauf deiner GPS-Route auf einer Karte zeigt, markierte Freunde),
+                    Bücher (Titel, Autor, Bewertung, Genre, Cover, Zusammenfassung, Kurzkommentar),
+                    Ziele (Titel, Lebensbereich, Fortschritt, Status, Moodboard-Bilder, Kurzkommentar)</li>
+                <li>deine Hausrunden (Name, Sportart, Distanz, Streckenverlauf aus der GPS-Route, Anlegedatum) –
+                    jede Hausrunde, die du anlegst, ist automatisch für deine Freunde sichtbar</li>
+                <li>Reaktionen und Kommentare, die du bei Freunden hinterlässt (mit deinem Namen) – diese liegen
+                    im Bereich des jeweiligen Freundes</li>
+            </ul>
+            <p>
+                Geteilte Einträge und eigene Hausrunden kannst du jederzeit wieder entfernen, eigene Kommentare löschen und Freunde
+                entfernen. Wenn du deine iCloud-Daten löschst (Abschnitt 12), wird auch dieser Bereich gelöscht.
+            </p>
+            <p><strong>b) Öffentliche Datenbank (Wettkämpfe, Verpflichtungen, Habit-Challenges, Streak-Duo, Hausrunden-Bestenliste, Benachrichtigungen)</strong></p>
+            <p>
+                Diese Daten werden in der öffentlichen CloudKit-Datenbank der App bei Apple gespeichert. Technisch
+                können sie von anderen Nutzern der App abgerufen werden; in der App angezeigt werden sie nur den
+                jeweiligen Teilnehmern bzw. Freunden.
+            </p>
+            <ul>
+                <li><strong>Wettkampf / Challenge:</strong> Art, Messgröße, Sportart, Zeitraum, Häufigkeit und
+                    Mindestdauer, Einsatz (z. B. „Kaffee“), Beitrittscode, Nutzerkennung des Erstellers; bei einem
+                    Abbruch der Name dessen, der abgebrochen hat</li>
+                <li><strong>Teilnahme:</strong> Anzeigename, Nutzerkennung, Ergebniswert (z. B. Distanz, Dauer
+                    oder Anzahl deiner Sport-Einheiten – auch aus Apple Health übernommene), Einheiten pro Woche,
+                    erfüllte Tage, Joker, Tag des Ausscheidens, Beitrittszeitpunkt</li>
+                <li><strong>Einladungen:</strong> Name des Einladenden, Nutzerkennung des Empfängers</li>
+                <li><strong>Streak-Duo:</strong> Namen und Nutzerkennungen beider Partner, Status, Art des Duos,
+                    Starttag und die Tage, an denen ihr aktiv wart</li>
+                <li><strong>Hausrunden-Bestenliste:</strong> Anzeigename, Nutzerkennung, Runde, Sportart, Bestzeit,
+                    Datum der Bestzeit, Anzahl der Versuche – wird automatisch eingetragen, wenn ein Training eine
+                    Hausrunde trifft</li>
+                <li><strong>Benachrichtigungen an Freunde:</strong> dein Name, Nutzerkennungen von Absender und
+                    Empfänger, Art (z. B. Einladung, Kommentar, Reaktion, Markierung, Rekord), Bezug und ein kurzer
+                    Vorschautext (z. B. gekürzter Kommentar oder Rundenname mit Zeit)</li>
+            </ul>
+            <p>
+                <strong>Löschen:</strong> Wenn du einen Wettkampf verlässt, wird deine Teilnahme gelöscht; wenn
+                du ein Streak-Duo beendest, werden das Duo bzw. deine Mitgliedschaft gelöscht. Hausrunden-Bestzeiten
+                und versendete Benachrichtigungen kannst du in der App nicht selbst löschen; sie werden auch durch
+                „Alle Daten zurücksetzen“ oder das Löschen deiner iCloud-Daten nicht entfernt. Schreib dafür eine
+                E-Mail an den Entwickler (Abschnitt 13), dann werden sie gelöscht.
+            </p>
+            <p>
+                Rechtsgrundlage ist die Bereitstellung der von dir genutzten Community-Funktion
+                (Art. 6 Abs. 1 lit. b DSGVO). Soweit Ergebniswerte auf Gesundheitsdaten beruhen, erfolgt die
+                Verarbeitung auf Grundlage deiner ausdrücklichen Einwilligung (Art. 9 Abs. 2 lit. a DSGVO),
+                die du durch Verlassen des Wettkampfs widerrufen kannst.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>8. Apple Health, Standort, Bluetooth, Kamera und Mikrofon</h2>
+            <p><strong>a) Apple Health</strong></p>
+            <p>Nur wenn du es in Apple Health freigibst, <strong>liest</strong> die App:</p>
+            <ul>
+                <li>Trainings und Trainingsrouten, aktive Energie, Distanzen (Gehen/Laufen, Radfahren, Schwimmen;
+                    beim Live-Training auch Wintersport, Rudern, Skaten) und Herzfrequenz</li>
+                <li>Körpergewicht, Größe, Geburtsdatum und biologisches Geschlecht (zur Berechnung deiner
+                    Ernährungsziele) sowie Ernährungs- und Wasserdaten</li>
+            </ul>
+            <p>Und <strong>schreibt</strong> nach Freigabe:</p>
+            <ul>
+                <li>live aufgezeichnete Trainings mit Route, Distanz, aktiver Energie und Herzfrequenz
+                    (vom Bluetooth-Pulssensor)</li>
+                <li>Körpergewicht und Größe, die du einträgst</li>
+                <li>deine geloggten Mahlzeiten (Energie, Makro- und Mikronährstoffe) und Wasser</li>
+            </ul>
+            <p>
+                Übernommene Health-Daten werden in der App gespeichert und mit deiner privaten iCloud
+                synchronisiert (Abschnitt 3). An Dritte gelangen sie nur in den beschriebenen Fällen und nur in
+                abgeleiteter Form: Sport-Kennzahlen im Coach-Kontext (Abschnitt 5), Ergebniswerte in Wettkämpfen
+                (Abschnitt 7b) und Sport-Einträge, die du selbst teilst (Abschnitt 7a). Puls, Körpergewicht, Größe,
+                Geburtsdatum, Geschlecht und Ernährungsdaten verlassen dein Gerät nur über deine private iCloud.
+            </p>
             <div class="highlight">
                 <p>
-                    🚫 Deine Daten werden <strong>nicht an Dritte weitergegeben</strong>.
-                    Keine Analytics, kein Tracking, keine Werbung, keine externen Server.
+                    ❤️ Health-Daten werden nicht für Werbung oder Marketing genutzt, nicht verkauft und nicht an
+                    Datenhändler weitergegeben.
+                </p>
+            </div>
+            <p><strong>b) Standort</strong></p>
+            <p>
+                Die App nutzt deinen Standort nur während eines Live-Trainings (auch bei gesperrtem Bildschirm),
+                um Route, Distanz und Pace aufzuzeichnen. Die Route wird in der App, in deiner iCloud und – nach
+                Freigabe – in Apple Health gespeichert. Sie verlässt dein Gerät sonst nur, wenn du das Training oder
+                eine Hausrunde in der Community teilst (Abschnitt 7a).
+            </p>
+            <p><strong>c) Bluetooth</strong></p>
+            <p>
+                Die App verbindet sich auf deinen Wunsch mit einem Bluetooth-Pulssensor. Der Puls wird nur auf
+                deinem Gerät verarbeitet, im Training gespeichert und – nach Freigabe – in Apple Health geschrieben.
+            </p>
+            <p><strong>d) Kamera, Fotos und Mikrofon</strong></p>
+            <p>
+                Barcode-Scan und das Auslesen von Nährwerttabellen erfolgen auf deinem iPhone. Mahlzeitenfotos
+                werden nur beim Foto-Logging übertragen (Abschnitt 5b). Fotos, die du Einträgen hinzufügst, bleiben
+                in der App und deiner iCloud, sofern du sie nicht in der Community teilst. Mikrofon und
+                Spracherkennung werden nur für die Spracheingabe genutzt; die Verarbeitung erfolgt auf deinem iPhone.
+            </p>
+            <p>
+                Rechtsgrundlage ist die Bereitstellung der jeweiligen Funktion (Art. 6 Abs. 1 lit. b DSGVO); für
+                Gesundheitsdaten deine ausdrückliche Einwilligung, die du über die Freigabe in Apple Health
+                erteilst und dort jederzeit widerrufen kannst (Art. 9 Abs. 2 lit. a DSGVO).
+            </p>
+            <div class="highlight">
+                <p>
+                    🚫 Über die Abschnitte 5 bis 8 hinaus werden deine Daten <strong>nicht an Dritte weitergegeben</strong>.
+                    Keine Analytics, kein Tracking, keine Werbung.
                 </p>
             </div>
         </div>
 
         <div class="section">
-            <h2>6. Tracking und Analytics</h2>
+            <h2>9. Tracking und Analytics</h2>
             <p>Diese App verwendet:</p>
             <ul>
                 <li>Kein Tracking</li>
                 <li>Keine Analytics-Dienste (kein Firebase, kein Amplitude, kein Mixpanel)</li>
                 <li>Keine Werbung</li>
                 <li>Keine Cookies</li>
-                <li>Keinen Netzwerkzugriff (außer iCloud Sync wenn aktiviert)</li>
+                <li>Netzwerkzugriff nur für App-Funktionen (iCloud, Coach, Foto-Logging, Barcode-Scan, Buchcover, Karten, Community), nie für Tracking</li>
             </ul>
         </div>
 
         <div class="section">
-            <h2>7. Push-Benachrichtigungen</h2>
+            <h2>10. Benachrichtigungen</h2>
             <p>
-                Push-Benachrichtigungen werden nur gesendet, wenn du ausdrücklich zustimmst.
-                Du kannst Benachrichtigungen jederzeit in den iOS-Einstellungen deaktivieren.
-                Benachrichtigungen werden lokal auf deinem Gerät erstellt und nicht über externe Server versendet.
+                Benachrichtigungen werden nur gesendet, wenn du ausdrücklich zustimmst.
+                Du kannst sie jederzeit in den iOS-Einstellungen deaktivieren.
+                Erinnerungen (z. B. Morgen- und Abenderinnerungen) werden lokal auf deinem Gerät erstellt.
+                Community-Benachrichtigungen (z. B. Einladungen, Kommentare, Reaktionen, Rekorde) werden über
+                Apple iCloud und den Apple Push Notification Service zugestellt (siehe Abschnitt 7b).
             </p>
         </div>
 
         <div class="section">
-            <h2>8. Deine Rechte (DSGVO Art. 15–22)</h2>
+            <h2>11. Deine Rechte (DSGVO Art. 15–22)</h2>
             <p>Du hast folgende Rechte bezüglich deiner personenbezogenen Daten:</p>
             <ul>
                 <li><strong>Auskunft</strong> (Art. 15): Du kannst jederzeit Auskunft über deine gespeicherten Daten erhalten.</li>
                 <li><strong>Berichtigung</strong> (Art. 16): Du kannst deine Daten direkt in der App bearbeiten.</li>
-                <li><strong>Löschung</strong> (Art. 17): Du kannst alle Daten jederzeit selbst löschen.</li>
+                <li><strong>Löschung</strong> (Art. 17): Du kannst deine Daten jederzeit löschen (siehe Abschnitt 12).</li>
                 <li><strong>Datenübertragbarkeit</strong> (Art. 20): Die Daten liegen auf deinem Gerät.</li>
                 <li><strong>Widerspruch</strong> (Art. 21): Du kannst der Verarbeitung widersprechen.</li>
                 <li><strong>Einschränkung</strong> (Art. 18): Du kannst die Verarbeitung einschränken.</li>
+                <li><strong>Widerruf</strong> (Art. 7 Abs. 3): Eine Einwilligung kannst du jederzeit mit Wirkung für die Zukunft widerrufen.</li>
+                <li><strong>Beschwerde</strong> (Art. 77): Du kannst dich bei einer Datenschutz-Aufsichtsbehörde beschweren.</li>
             </ul>
         </div>
 
         <div class="section">
-            <h2>9. Datenlöschung</h2>
+            <h2>12. Datenlöschung</h2>
             <p>
-                Du kannst alle deine Daten jederzeit selbst löschen: In der App unter
-                <strong>Profil → Alle Daten zurücksetzen</strong>. Damit werden alle lokal
+                Du kannst deine Daten jederzeit selbst löschen: In der App unter
+                <strong>Profil → Alle Daten zurücksetzen</strong>. Damit werden die lokal
                 gespeicherten Daten unwiderruflich gelöscht.
             </p>
             <p>
-                Für iCloud-Daten: Einstellungen → [Dein Name] → iCloud → Manage Storage →
-                journal → Delete Data.
+                Für iCloud-Daten (einschließlich des Community-Bereichs): Einstellungen → [Dein Name] → iCloud →
+                Speicher verwalten → journal → Daten löschen.
+            </p>
+            <p>
+                Daten, die die App in Apple Health geschrieben hat, löschst du in der Health-App. Zur Löschung von
+                Daten in der öffentlichen Datenbank siehe Abschnitt 7b.
             </p>
         </div>
 
         <div class="section">
-            <h2>10. Kontakt für Datenschutzanfragen</h2>
+            <h2>13. Kontakt für Datenschutzanfragen</h2>
             <p>
                 Bei Fragen zum Datenschutz wende dich an:<br>
                 <a href="mailto:marius.frassek10@web.de">marius.frassek10@web.de</a>
@@ -153,7 +419,7 @@
         </div>
 
         <div class="section">
-            <h2>11. Änderungen dieser Datenschutzerklärung</h2>
+            <h2>14. Änderungen dieser Datenschutzerklärung</h2>
             <p>
                 Diese Datenschutzerklärung kann bei App-Updates angepasst werden.
                 Die aktuelle Version ist immer unter dieser URL abrufbar.
@@ -164,7 +430,7 @@
             <a href="index.html">Start</a>
             <a href="impressum.html">Impressum</a>
             <a href="support.html">Support</a>
-            <span>Stand: April 2026</span>
+            <span>Stand: Oktober 2026</span>
         </div>
     </div>
 </body>
